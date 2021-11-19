@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haakon og Daniel kap 5 nettside!</title>
+
+<script>
+    window.onload = oppstart;
+    //funtion oppstart har Haakon gjort
+
+    function oppstart() {
+        var antallKolonner = 10
+        var antallRader = 10
+        var bredde = document.getElementById("tegneflate").width 
+        var hoeyde = document.getElementById("tegneflate").hoeyde
+        var kolonnebredde = bredde / antallKolonner
+        var radhoeyde = hoeyde / antallRader
+
+        // Tegne rutenett
+
+        var ctx = document.getElementById("tegneflate").getContext("2d")
+
+        ctx.lineWidth = 2
+        ctx.strokestyle = "blue"
+
+       
+            
+        } 
+        for (var tellerK = 0; tellerK <= antallKolonner; tellerK++) {
+            ctx.beginPath()
+            ctx.moveTo(tellerK * kolonnebredde, 0);
+            ctx.lineTo(tellerK * kolonnebredde, hoeyde);
+            ctx.stroke()
+        }
+        for (var tellerR = 0; tellerR <= antallRader; tellerR++) {
+            ctx.beginPath();
+            ctx.moveTo(0,tellerR * radHoeyde);
+            ctx.lineTo(bredde, tellerR * radHoeyde);
+            ctx.stroke();
+
+        }
+
+    //end
+
+    // While-løkker
+    
+function utfoer() {
+var antall = document.getElementById("txtVerdi").value;
+while (antall > 0) {
+antall--;   
+}
+}
+
+//end
+
+// Uendelige-løkker
+
+var teller = 0;
+while (teller < 3) {
+    document,getElementById("utskrift").innerHTML += "Nok en gang<br />" ;
+    teller = teller + 1;
+}
+
+//end
+
+// For-løkker
+
+var teller = 1;
+while (teller <10) {
+    document.getElementById("utskrift").innerHTML += "Nok en gang<br/>";
+    teller++;
+}
+
+//end
+
+// Avansert Teller
+
+function utfoer2() {
+var faktor1 = document.getElementById("txtVerdi").value;
+for(var faktor2 = 1; faktor2 <= 10; faktor2++) {
+    var produkt = faktor1 * faktor2;
+    document.getElementById("utskrift").innerHTML += faktor1 + "*" + faktor2 + "=" + produkt + "<br />";
+}
+
+}
+
+//end
+
+// Avansert Teller
+
+for (var teller = 1; teller <= 25; teller++) {
+if(teller % 2 === 0) {
+document.getElementById("utskrift").innerHTML += teller +
+"<br />";
+}
+}
+
+//end
+ 
+</script>
+
+</head>
+<body>
+ <canvas id="tegneflate" width="400" height="400"></canvas>
+</body>
+</html>

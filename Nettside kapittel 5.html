@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haakon og Daniel kap 5 nettside!</title>
+
+<script>
+    
+window.onload = oppstart;
+
+function oppstart() {
+    var antallKolonner = 10;
+    var antallRader = 10;
+    var bredde = document.getElementById("tegneflate").width; 
+    var hoeyde = document.getElementById("tegneflate").height;
+    var kolonneBredde = bredde / antallKolonner;
+    var radHoeyde = hoeyde / antallRader;
+    
+    var ctx = document.getElementById("tegneflate").getContext("2d");
+
+    var tekst = "";
+    for (var antall = 5; antall >= 1; antall --) {
+    tekst += antall + " little monkeys jumping on the bed,<br />";
+    tekst += (antall > 1 ? "One" : "He") + " fell out and bumped his head;<br />";
+    tekst += "Momma called the doctor, the doctor said,<br />";
+    tekst += "That's what you get for jumping on the bed!<br />";
+    if(antall > 1) {
+    tekst += (antall-1) + " little monkeys jumping on the bed!<br />";
+    }
+    else {
+        tekst += "Put those monkeys straight to bed!<br /><br />";
+    }
+
+    document.getElementById("btnGenererer").onclick = generer;
+
+}
+
+function generer() {
+var fraVerdi = document.getElementById("txtFra").value; 
+var tilVerdi = document.getElementById("txtTil").value;
+
+var tekst = "";
+
+for (var hovedtall = fraVerdi; hovedtall <= tilVerdi; hovedtall++) {
+    var erPrimtall = true;
+    for (var deletall = 2; deletall < hovedtall; deletall++) {
+        if (hovedtall % deletall === 0) { 
+            erPrimtall = false;
+            break;
+        }
+    }
+    if (erPrimtall === true && hovedtall > 1) {
+        tekst += "Tallet " + hovedtall + " er et primtall!<br />";
+    }
+}
+
+document.getElementById("utskrift").innerHTML = tekst;
+
+}
+
+    document.getElementById("utskrift").innerHTML = tekst;
+
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "blue";
+          
+    for (var tellerK = 0; tellerK <= antallKolonner; tellerK++) {
+        ctx.beginPath();
+        ctx.moveTo(tellerK * kolonneBredde, 0);
+        ctx.lineTo(tellerK * kolonneBredde, hoeyde);
+        ctx.stroke();
+    }
+    
+    for (var tellerR = 0; tellerR <= antallRader; tellerR++) {
+        ctx.beginPath();
+        ctx.moveTo(0, tellerR * radHoeyde);
+        ctx.lineTo(bredde, tellerR * radHoeyde);
+        ctx.stroke();
+    }
+}
+
+//Hello World!
+
+</script>
+
+<body>
+
+<h1>Programmering i JavaScript Kapittel 5</h1>
+<h2>Løkker</h2>
+
+<br>
+
+<h2>Tegne Rutenett med løkker</h2>
+
+<br>
+
+<p>Dette rutenettet har blitt tegnet eksklusivt med bruket av løkker og reglene satt.</p>
+
+<br>
+
+<canvas id="tegneflate" width="400" height="400"></canvas>
+
+<br>
+<br>
+<br>
+
+<p>Versene av Little Monkeys jumping on the bed gått nedover med tall ved bruk av løkker.</p>
+
+<br>
+
+<p id="utskrift"></p>
+
+<br>
+<br>
+
+<p>Skriv tall fra lavest til høyest og maskinen vil skrive alle primtallene imellom.</p>
+
+<p>
+    Fra: <input type="text" id="txtFra" />
+    Til: <input type="text" id="txtTil" />
+    <button id="btnGenererer" type="button">Generer</button>
+</p>
+<p id="utskrift"></p>
+
+</body>
+
+
