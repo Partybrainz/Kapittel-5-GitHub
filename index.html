@@ -1,127 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">                      
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haakon og Daniel kap 5 nettside!</title>
+    <title>Haakon og Daniel sin kap 5 nettside!</title>
 
 <script>
     
 window.onload = oppstart;
-
+                                     //function oppstart har Haakon laget med litt hjelp fra daniel
 function oppstart() {
-    var antallKolonner = 10;
-    var antallRader = 10;
+    var antallKolonner = 15;  //Lager antall kolonner og rader for ruter opp til 15.
+    var antallRader = 15;
     var bredde = document.getElementById("tegneflate").width; 
-    var hoeyde = document.getElementById("tegneflate").height;
+    var hoeyde = document.getElementById("tegneflate").height;  //Henter "tegneflate" fra "head" og setter bredde og høyde.    
     var kolonneBredde = bredde / antallKolonner;
-    var radHoeyde = hoeyde / antallRader;
+    var radHoeyde = hoeyde / antallRader;  //Deler bredde med antall kolonner eller rader.
     
-    var ctx = document.getElementById("tegneflate").getContext("2d");
+    var ctx = document.getElementById("tegneflate").getContext("2d");  //Lager "tegneflate" basert på informasjonen gitt fra cdx nedover i koden med kontekst av at den er en 2 dimensjonell form.
 
-    var tekst = "";
-    for (var antall = 5; antall >= 1; antall --) {
-    tekst += antall + " little monkeys jumping on the bed,<br />";
-    tekst += (antall > 1 ? "One" : "He") + " fell out and bumped his head;<br />";
-    tekst += "Momma called the doctor, the doctor said,<br />";
-    tekst += "That's what you get for jumping on the bed!<br />";
-    if(antall > 1) {
-    tekst += (antall-1) + " little monkeys jumping on the bed!<br />";
+    var tekst = "";  //Variabel som skal vise tekst imellom tegnene.
+    for (var antall = 10; antall >= 1; antall --) {  //Antall elefanter starter med 10 og går ned med 1 for hvert vers.
+    tekst += antall + " big elephants jumping on the trampoline,<br />";
+    tekst += (antall > 1 ? "One" : "He") + " fell out and broke his skull;<br />"; //Teksten i verset "One" blir erstattet med "He" når det er 1 vers eller mindre.
+    tekst += "Momma called God, and God said,<br />";
+    tekst += "Let there be light!<br />";
+    if(antall > 1) {  //Om antall elefanter er 1 gjør dette.
+        tekst += (antall-1) + " Elephants doing dumb stuff!<br /><br />";
     }
-    else {
-        tekst += "Put those monkeys straight to bed!<br /><br />";
+    else { //Ellers vis denne teksten.
+        tekst += "God bless America!<br /><br />";
     }
 
-    document.getElementById("btnGenererer").onclick = generer;
+    document.getElementById("btnGenererer").onclick = generer;  //Generer når man klikker på den.
 
 }
-
+                        //function generer har Daniel laget mens Haakon feilsøkte i koden
 function generer() {
-var fraVerdi = document.getElementById("txtFra").value; 
+var fraVerdi = document.getElementById("txtFra").value;  //Genererer variabler basert på "txtFra" og "txtTil" i "headen".
 var tilVerdi = document.getElementById("txtTil").value;
 
-var tekst = "";
+var tekst = "";  //Variabel som skal vise tekst imellom tegnene.
 
-for (var hovedtall = fraVerdi; hovedtall <= tilVerdi; hovedtall++) {
-    var erPrimtall = true;
-    for (var deletall = 2; deletall < hovedtall; deletall++) {
+for (var hovedtall = fraVerdi; hovedtall <= tilVerdi; hovedtall++) {  //Gir variable til "hovedtall" og referer fraVerdi, tilVerdi og hovedVerdi.
+    var erPrimtall = true; //Om dette er sant
+    for (var deletall = 2; deletall < hovedtall; deletall++) {  //Gir regelen at tallet som blir generert kan bare dele på seg selv og 2, regelen til primtall.
         if (hovedtall % deletall === 0) { 
-            erPrimtall = false;
+            erPrimtall = false;  //Ingen tall vises om tallet ikke er primtall.
             break;
         }
     }
-    if (erPrimtall === true && hovedtall > 1) {
-        tekst += "Tallet " + hovedtall + " er et primtall!<br />";
+    if (erPrimtall === true && hovedtall > 1) {  //Viser ikke tall som er 1 eller mindre selv om de er primtall.
+        tekst += "Tallet " + hovedtall + " er et primtall!<br />";  //Viser tekst så lenge variablene stemmer med det at tallet er primtall.
     }
 }
 
-document.getElementById("utskrift").innerHTML = tekst;
+document.getElementById("utskrift2").innerHTML = tekst;  //Henter "utskrift2" fra "headen".
 
 }
 
-    document.getElementById("utskrift").innerHTML = tekst;
+    document.getElementById("utskrift").innerHTML = tekst;  //Henter "utskrift" fra "headen".
 
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = "blue";
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = "red";  //Canvasen har linjebredde med 5 piksler og rød farge.
           
-    for (var tellerK = 0; tellerK <= antallKolonner; tellerK++) {
-        ctx.beginPath();
+    for (var tellerK = 9; tellerK <= antallKolonner; tellerK++) {  //Begynner etter antall linjer har gått forbi 9.
+        ctx.beginPath(); //Begynner linjer
         ctx.moveTo(tellerK * kolonneBredde, 0);
         ctx.lineTo(tellerK * kolonneBredde, hoeyde);
-        ctx.stroke();
+        ctx.stroke();  //Ender horisontale linjer.
     }
     
-    for (var tellerR = 0; tellerR <= antallRader; tellerR++) {
-        ctx.beginPath();
+    for (var tellerR = 9; tellerR <= antallRader; tellerR++) {  //Begynner etter antall linjer har gått forbi 9.
+        ctx.beginPath();  //Begynner linjer
         ctx.moveTo(0, tellerR * radHoeyde);
         ctx.lineTo(bredde, tellerR * radHoeyde);
-        ctx.stroke();
+        ctx.stroke();  //Ender vertikale lonjer
     }
 }
-
-//Hello World!!
 
 </script>
 
+<style>
+
+#border {                  
+   border-color: blue;
+   border-width: 10px;
+   border-style: groove;
+   text-align: center;
+   background-color: rgb(116, 214, 140); 
+}
+
+</style>
+
 <body>
+
+<div id="border">
 
 <h1>Programmering i JavaScript Kapittel 5</h1>
 <h2>Løkker</h2>
 
 <br>
 
-<h2>Tegne Rutenett med løkker</h2>
+<p> <a href="https://github.com/Partybrainz/Kapittel-5-GitHub" class="btn btn-dark" >Link til GitHub!</a>
+</p>
 
 <br>
 
-<p>Dette rutenettet har blitt tegnet eksklusivt med bruket av løkker og reglene satt.</p>
+<p>Kode med løkker skjer når en betingelse eller krevelse blir oppnådd og for en mengde tid eller beløp.</p>
+<p>Det er to hovedgrupper av løkker, for-løkker og while-løkker.</p>
+<p>For-løkker skjer så lenge noe har skjedd eller antall av noe har blitt møtt og while-løkker skjer så lenge forholdene er møtt.</p>
 
 <br>
 
-<canvas id="tegneflate" width="400" height="400"></canvas>
+<figure>
+
+<img src="JavaScript-for-Loop.png" width=250>
+
+<figcaption class="litenSkrift">Bildeillustrasjon av løkker http://127.0.0.1:5500/Kapittel-5-GitHub/JavaScript-for-Loop.png</figcaption>
+
+</figure>
+
+<br>
+
+<p>Nedenfor er eksempler på hva du kan gjøre med løkker.</p>
+
+</div>
+
+<br>
+
+<div id="border">
+
+<h2>Tegnet rutenett med løkker</h2>
+
+<br>
+
+<p>Dette rutenettet har blitt tegnet eksklusivt med bruket av løkker og reglene satt. 
+    
+   <br>     
+   
+   I en 15*15 rute så begynner den å lage sine vertikale og horsiontale ruter etter 9 ganger med å hoppe over.</p>
+
+<br>
+
+<canvas id="tegneflate" width="400" height="400" ></canvas>
 
 <br>
 <br>
 <br>
 
-<p>Versene av Little Monkeys jumping on the bed gått nedover med tall ved bruk av løkker.</p>
+</div>
+
+<br>
+
+<div id="border">
+
+<p>Versene går nedover med tall ved bruk av løkker.
+
+    <br>
+
+   Antall elefanter går ned fra 5 og når verset når en ape så forandrer versteksten passende.
+</p>
 
 <br>
 
 <p id="utskrift"></p>
 
 <br>
+
+</div>
+
 <br>
 
-<p>Skriv tall fra lavest til høyest og maskinen vil skrive alle primtallene imellom.</p>
+<div id="border">
+
+<p>Skriv tall fra lavest til høyest og maskinen vil skrive alle primtallene imellom.
+
+    <br>
+
+   Programmet leser alle tallene imellom de du skriver og finner alle primtallene der.
+</p>
 
 <p>
     Fra: <input type="text" id="txtFra" />
     Til: <input type="text" id="txtTil" />
-    <button id="btnGenererer" type="button">Generer</button>
+    <button id="btnGenererer" class="btn btn-primary" type="button">Generer</button>
 </p>
-<p id="utskrift"></p>
+
+<br> 
+
+<p id="utskrift2"></p>
+
+</div>
 
 </body>
 
