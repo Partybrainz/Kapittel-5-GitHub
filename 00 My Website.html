@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        .OverLay { position: absolute; z-index: 3; opacity: 0.5; filter: alpha(opacity = 50); top: 0; bottom: 0; left: 0; right: 0; width: 100%; height: 100%; background-color: Black; color: White;}
+        body { height: 100%; }
+        html { height: 100%; }
+        </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>My Website</title>
+    <script>
+
+        window.onload= oppstart
+        window.onclick= update
+
+        var antall = 0;
+        var hemmeligTall
+        var forsoekIgjen
+
+        function oppstart() {
+            alert("Welcome to my webiste!");
+
+            document.getElementById("leggtil").ondblclick = leggtil;
+
+            document.getElementById("svar").onclick = visSvar;
+            document.getElementById("svar2").onclick = visSvar2;
+            document.getElementById("svar3").onclick = visSvar3;
+
+            document.getElementById("G").onclick = visG;
+            document.getElementById("B").onclick = visB;
+            document.getElementById("R").onclick = visR;
+
+            document.getElementById("rbtnBilde1").onclick = visBilde1;
+            document.getElementById("rbtnBilde2").onclick = visBilde2;
+            document.getElementById("rbtnBilde3").onclick = visBilde3;
+
+            document.getElementById("melding2").style.visibility = 'hidden';
+            document.getElementById("chkVisMelding2").onchange = visMelding;
+            
+            document.getElementById("btnKlikk").onclick = klikket;
+
+            document.getElementById("btnBeregn").onclick = beregn;
+
+            document.getElementById("btnGenererer2").onclick = beregn2;
+
+            document.getElementById("btnUtfoer").onclick = utfoer
+
+    hemmeligTall = Math.floor(Math.random()*101);
+    forsoekIgjen = 10;
+    document.getElementById("btnGjett2").onclick = gjett
+
+            function utfoer() {
+        var alder = document.getElementById("textVerdi").value
+
+        if (alder >= 150) {
+            document.getElementById("utskrift").innerHTML = "Du er et mirakel!"
+        }
+
+        else if (alder >= 67) {
+            document.getElementById("utskrift").innerHTML = "Du er pensjonist"
+        }
+
+        else if (alder >= 18) {
+            document.getElementById("utskrift").innerHTML = "Du er myndig"
+        }
+
+        else if (alder >= 0) {
+            document.getElementById("utskrift").innerHTML = "Du er ikke myndig"
+        }
+
+        else {
+            document.getElementById("utskrift").innerHTML = "Du er ikke født"
+        }
+    }
+
+    function gjett()  {
+    forsoekIgjen--
+    
+    var tall = document.getElementById("txtTall").value
+    
+    if (tall === hemmeligTall)  {
+        document.getElementById("melding3").innerHTML = "Gratulerer!!!"
+        document.getElementById("btnGjett2").disabled = true
+    }
+    else if (forsoekIgjen <= 0 ) {
+    document.getElementById("melding3").innerHTML = "Du klarte ikke å finne tallet " + hemmeligTall
+    document.getElementById("btnGjett2").disabled = true
+    }
+    else if (tall < hemmeligTall)  {
+        document.getElementById("melding3").innerHTML = "tallet er for lavt"
+    }
+    else if (tall > hemmeligTall)  {
+        document.getElementById("melding3").innerHTML = "tallet er for høyt"
+    }
+}
+
+function klikket() {
+antall = antall + 1;
+document.getElementById("antKlikk").innerHTML = antall;
+}
+
+var ctx = document.getElementById("tegneflate").getContext("2d");
+
+var ctx2 = document.getElementById("tegneflate2").getContext("2d");
+
+var ctx3 = document.getElementById("tegneflate3").getContext("2d");
+
+ctx.strokeStyle = "green"
+ctx.lineWidth = "10"
+
+ctx2.fillStyle = "white"
+ctx2.strokeStyle = "navy"
+ctx2.lineWidth = "5"
+ctx2.strokeStyle = "red"
+
+ctx3.fillStyle = "green"
+ctx3.strokeStyle = "navy"
+ctx3.lineWidth = "5"
+ctx3.strokeStyle = "red"
+
+ctx.beginPath();
+ctx.moveTo(55, 10); 
+ctx.lineTo(150, 100); 
+ctx.lineTo(50, 100);
+ctx.stroke(); 
+
+ctx2.beginPath();
+ctx2.moveTo(200, 500);
+ctx2.rect(10, 10, 150, 100);
+ctx2.fill();
+ctx2.stroke();
+
+ctx3.beginPath();
+ctx3.moveTo(600, 1500);
+ctx3.arc(118, 110, 80, 0, 2 * Math.PI);
+ctx3.fill();
+ctx3.stroke();
+
+            function visMelding() {
+if (document.getElementById("chkVisMelding2").checked === true) {
+    document.getElementById("melding2").style.visibility = 'visible';
+}
+else {
+    document.getElementById("melding2").style.visibility ='hidden';    
+    }
+}
+
+        }
+
+        
+        function visBilde1() {
+    document.getElementById("bilde").src = document.getElementById("rbtnBilde1").value;
+}
+
+        function visBilde2() {
+    document.getElementById("bilde").src = document.getElementById("rbtnBilde2").value;
+}
+
+        function visBilde3() {
+    document.getElementById("bilde").src = document.getElementById("rbtnBilde3").value;
+}
+
+
+        function update()  {
+    
+    var time = new Date();
+    
+    document.getElementById("klokkeutskrift").innerHTML= time.getDate() + ":" + time.getHours() + ":" + time.getMinutes() +
+    ":" + time.getSeconds() + ":" + time.getMilliseconds();
+
+    setTimeout(update, 1);
+}
+
+function beregn() {
+var hoyde = document.getElementById("txtHoyde").value.replace(",", ".");
+var vekt = document.getElementById("txtVekt").value.replace(",", ".");
+
+var bmi = vekt / (hoyde * hoyde) ;
+
+document.getElementById("resultat").innerHTML = "Din BMI er: " + bmi.toFixed(3).replace(".", ",");
+
+}
+
+function beregn2() {
+
+var navn = document.getElementById("txtNavn").value
+var kjonn = document.getElementById("1stKjonn").value
+var Adj1 = document.getElementById("txtAdjektiv1").value
+var Adj2 = document.getElementById("txtAdjektiv2").value
+var Adj3 = document.getElementById("txtAdjektiv3").value
+var Adj4 = document.getElementById("txtAdjektiv4").value
+var Adj5 = document.getElementById("txtAdjektiv5").value
+var Adj6 = document.getElementById("txtAdjektiv6").value
+var Adj7 = document.getElementById("txtAdjektiv7").value
+var Adj8 = document.getElementById("txtAdjektiv8").value
+var Adj9 = document.getElementById("txtAdjektiv9").value
+var Adj10 = document.getElementById("txtAdjektiv10").value
+var alder = document.getElementById("txtAlder").value
+
+var aarTi1100 = 100 - alder;
+
+var historie = "Jeg identifiserer meg som en " + kjonn + ", heter " + navn + " og er " + alder + " år gammel.<br /> ";
+
+historie = historie + "Jeg har " + aarTi1100 + " år igjen til jeg dør, se nedover for mer potensielle cursed setninger.<br /> ";
+
+historie = historie + navn + " elsker å " + Adj1 + ". <br /> ";
+historie = historie + Adj2 + " og grønn er en bra kombinasjon. <br /> ";
+historie = historie + Adj3 + " er veldig dårlig. <br /> ";
+historie = historie + navn + " sin verste fiende er " + Adj4 + ". <br /> ";
+historie = historie + Adj5 + " var veldig snill. <br /> ";
+historie = historie + navn + " bor på " + Adj6 + ". <br /> ";
+historie = historie + Adj7 + " har skumle monstre i seg. <br /> ";
+historie = historie + navn + " hadde fått " + Adj8 + ". <br /> ";
+historie = historie + navn + " ser ut som en " + Adj9 + ". <br />";
+historie = historie + navn + " hadde " + Adj10 + ". <br />";
+
+document.getElementById("historie").innerHTML = historie;
+
+}
+
+        function visSvar() {
+            document.getElementById("svar").innerHTML = "Germany";
+
+        }
+
+        function visSvar2() {
+            document.getElementById("svar2").innerHTML = "Because of old Coca Cola marketing campaigns associated with their company colors.";
+
+        }
+
+        function visSvar3() {
+            document.getElementById("svar3").innerHTML = "Yuletide";
+
+        }
+
+        function leggtil() {
+            var tid = new Date();
+            var nyttElement = document.createElement("li");
+        
+    nyttElement.innerHTML = tid.getHours() + ":" + tid.getMinutes() + ":" + tid.getSeconds();
+    
+    document.getElementById("tider").appendChild(nyttElement);
+
+    }
+
+
+    function visG() {
+        document.getElementById("melding").className = "G";
+     }
+
+     function visB() {
+        document.getElementById("melding").className = "B";
+     }
+    
+
+     function visR() {
+        document.getElementById("melding").className = "R";
+     }
+    
+    
+    </script>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
+
+.G {color:green;}
+
+.B {color:White;}
+    
+.R {color: Red;}
+
+#border {                  
+   background-color: #882a1c;
+   border-width: 20px;
+   border-style: groove;
+   opacity: 0.75;
+   text-align: center;
+   align-content: center;
+   align-self: auto;
+   border-color: rgb(#F2F2F2);
+}
+
+#border2 {
+    border-width: 5px;
+    border-color:crimson;
+}
+   
+#font {
+
+font-family: 'Playfair Display', serif;
+
+}
+
+img {
+  border: 6px solid rgb(107, 216, 80);
+  background-color: white;
+}
+
+body {
+  font-family: 'Libre Baskerville', serif;
+  src: url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap');
+  background-image: url("Snowing5.gif");
+  color: #fff;
+}
+
+h1 {
+  font-weight: 700;
+
+}
+
+ramme {
+	border-color: blue;
+	border-width: 10px;
+	border-style: solid;
+	text-align: center;
+    align-content: center;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="row">   
+<div id="border">
+<div id="h1">
+
+    <h1>Daniel's Website Xmas Edition</h1>
+
+    <br>
+
+    <p>Spill musikk!</p>
+    <audio controls>
+        <source src="SW.ogg" type="audio/ogg">
+        <source src="Stardew Valley OST - Winter Festival.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio>
+
+    <br>
+    <br>
+    <img src="Christmas.gif" width="300" />
+
+    <br>
+    <br>
+
+    <div id="ramme">
+    <h1>Christmas quiz</h1>
+
+    <p>1. Where did modern christmas trees originate?</p>
+    <p id="svar">Click here for the answer</p>
+    
+    <p>2. Why is Santa Claus dressed in red & white today?</p>
+    <p id="svar2">Click here for the answer</p>
+    
+    <p>3. What is the old-english word for christmas time?</p>
+    <p id="svar3">Click here for the answer</p> 
+    </div>
+
+    <br>
+    
+    <h1>Christmassy Pokemon</h1>
+
+    <img src="#" width=200 id="bilde" />
+
+    <ol>
+        <p><input type="radio" name="bildeliste" id="rbtnBilde1" value="225.png" />Delibird</p>
+        <p><input type="radio" name="bildeliste" id="rbtnBilde2" value="234.png" />Stantler</p>
+        <p><input type="radio" name="bildeliste" id="rbtnBilde3" value="433.png" />Chingling</p>
+    </ol>
+
+    <br>
+
+    <h1>Roundtimes</h1>
+    <h3>Times:</h3>
+    <p id="leggtil">Show time by clicking this twice.</p>
+
+    <br>
+
+    <ol id="tider">
+    </ol>
+    <h1>Current Time</h1>
+    <p>Klokka er nå: <span id="klokkeutskrift">Kunne ikke vise tidspunkt</span></p>
+
+    <br>
+
+    <h1 id="melding">Bytt farge!</h1>
+    <p>Click on the color you want!:</p>
+    <div class="mx-auto" style="width: 200px;">
+    <ul>
+        <li id="G">Green</li>
+        <li id="B">White</li>
+        <li id="R">Red</li>
+    </ul>
+    </div>
+
+<br>
+
+Klikk på knappen! <p><input type="checkbox" id="chkVisMelding2" /></p>
+<p id="melding2">God jul!</p>
+
+<br>
+
+<p>Canvas tegninger!</p>
+<canvas id="tegneflate" width=200 height=200></canvas>
+
+<canvas id="tegneflate2" width=200 height=200></canvas>
+
+<canvas id="tegneflate3" width=200 height=250></canvas>
+
+<br>
+
+<button class="btn btn-light" id="btnKlikk">Klikk meg!</button>   
+<p>Knappen er trykket <span id="antKlikk">0</span> ganger</p>
+
+<br>
+
+<p>BMI Kalkulator</p>
+<p>Vekt: <input type="text" id="txtVekt" /><br />
+Høyde: <input type="text" id="txtHoyde" /></p>
+    
+    <button class="btn btn-light" id="btnBeregn">Beregn</button>
+    <p id="resultat"></p>
+
+<br>
+
+<p>
+
+    <p>Historiegenerator</p>
+    Navn: <input type="text" id="txtNavn" placeholder="Navn" /><br />
+    
+    Kjønn: <select id="1stKjonn" placeholder="Velg kjønn" ><option
+    
+    value="gutt">Gutt</option><option 
+    value="attack helicopter">Attack helicopter</option><option
+    value="jente">Jente</option></select><br />
+
+    Alder: <input type="number" min="0" max="120" id="txtAlder" placeholder="99" /><br />
+    
+    <br>
+    
+    Aktivitet: <input type="text" id="txtAdjektiv1" placeholder="Aktvivitet" /><br />
+    
+    <br>
+    
+    Dekorasjon: <input type="text" id="txtAdjektiv2" placeholder="Dekorasjon" /><br />
+    
+    <br>
+    
+    Spill: <input type="text" id="txtAdjektiv3" placeholder="Spill" /><br />
+    
+    <br>
+    
+    Annen person: <input type="text" id="txtAdjektiv4" placeholder="Annen person" /><br />
+    
+    <br>
+    
+    Forelder: <input type="text" id="txtAdjektiv5" placeholder="Forelder" /><br />
+    
+    <br>
+    
+    Bygning: <input type="text" id="txtAdjektiv6" placeholder="Bygning" /><br />
+    
+    <br>
+    
+    Bok: <input type="text" id="txtAdjektiv7" placeholder="Bok" /><br />
+    
+    <br>
+    
+    Skade: <input type="text" id="txtAdjektiv8" placeholder="Skade" /><br />
+    
+    <br>
+    
+    Dyr: <input type="text" id="txtAdjektiv9" placeholder="Dyr" /><br />
+    
+    <br>
+    
+    Effekt på person: <input type="text" id="txtAdjektiv10" placeholder="Effekt på person" /><br />
+    
+    <br>
+    
+    <button id="btnGenererer2" class="btn btn-light" type="button">Generer historie</button></p>
+    
+    <p id="historie"></p>
+
+<br>
+
+<p>Myndighetstester</p>
+<p><input type="text" id="textVerdi"><br>
+    <br>
+    <button class="btn btn-light" id="btnUtfoer">Utfør</button>
+    </p>
+    
+    <p id="utskrift"></p>
+
+<br>
+
+<p>Gjett tallet!</p>
+<p>Tall: <input type="text" id="txtTall" /><br />
+    <br>
+<button class="btn btn-light" id="btnGjett2">Gjett</button</p>
+<p id="melding3"></p>
+
+</body>
+</html>
