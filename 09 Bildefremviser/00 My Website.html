@@ -62,23 +62,23 @@
         var alder = document.getElementById("textVerdi").value
 
         if (alder >= 150) {
-            document.getElementById("utskrift").innerHTML = "Du er et mirakel!"
+            document.getElementById("utskrift").innerHTML = "You're a miracle!"
         }
 
         else if (alder >= 67) {
-            document.getElementById("utskrift").innerHTML = "Du er pensjonist"
+            document.getElementById("utskrift").innerHTML = "You're a pensioner"
         }
 
         else if (alder >= 18) {
-            document.getElementById("utskrift").innerHTML = "Du er myndig"
+            document.getElementById("utskrift").innerHTML = "You have legality"
         }
 
         else if (alder >= 0) {
-            document.getElementById("utskrift").innerHTML = "Du er ikke myndig"
+            document.getElementById("utskrift").innerHTML = "You don't have legality"
         }
 
         else {
-            document.getElementById("utskrift").innerHTML = "Du er ikke født"
+            document.getElementById("utskrift").innerHTML = "You're not born"
         }
     }
 
@@ -88,18 +88,18 @@
     var tall = document.getElementById("txtTall").value
     
     if (tall === hemmeligTall)  {
-        document.getElementById("melding3").innerHTML = "Gratulerer!!!"
+        document.getElementById("melding3").innerHTML = "Gongratulations!!!"
         document.getElementById("btnGjett2").disabled = true
     }
     else if (forsoekIgjen <= 0 ) {
-    document.getElementById("melding3").innerHTML = "Du klarte ikke å finne tallet " + hemmeligTall
+    document.getElementById("melding3").innerHTML = "You couldn't find the number " + hemmeligTall
     document.getElementById("btnGjett2").disabled = true
     }
     else if (tall < hemmeligTall)  {
-        document.getElementById("melding3").innerHTML = "tallet er for lavt"
+        document.getElementById("melding3").innerHTML = "too low"
     }
     else if (tall > hemmeligTall)  {
-        document.getElementById("melding3").innerHTML = "tallet er for høyt"
+        document.getElementById("melding3").innerHTML = "too high"
     }
 }
 
@@ -186,14 +186,14 @@ var vekt = document.getElementById("txtVekt").value.replace(",", ".");
 
 var bmi = vekt / (hoyde * hoyde) ;
 
-document.getElementById("resultat").innerHTML = "Din BMI er: " + bmi.toFixed(3).replace(".", ",");
+document.getElementById("resultat").innerHTML = "Your BMI is: " + bmi.toFixed(3).replace(".", ",");
 
 }
 
 function beregn2() {
 
 var navn = document.getElementById("txtNavn").value
-var kjonn = document.getElementById("1stKjonn").value
+var kjonn = document.getElementById("1stGender").value
 var Adj1 = document.getElementById("txtAdjektiv1").value
 var Adj2 = document.getElementById("txtAdjektiv2").value
 var Adj3 = document.getElementById("txtAdjektiv3").value
@@ -208,20 +208,20 @@ var alder = document.getElementById("txtAlder").value
 
 var aarTi1100 = 100 - alder;
 
-var historie = "Jeg identifiserer meg som en " + kjonn + ", heter " + navn + " og er " + alder + " år gammel.<br /> ";
+var historie = "I identify as a " + kjonn + ", named " + navn + " and is " + alder + " years old.<br /> ";
 
-historie = historie + "Jeg har " + aarTi1100 + " år igjen til jeg dør, se nedover for mer potensielle cursed setninger.<br /> ";
+historie = historie + "I have " + aarTi1100 + " years left until i die, look below for more cursed sentences.<br /> ";
 
-historie = historie + navn + " elsker å " + Adj1 + ". <br /> ";
-historie = historie + Adj2 + " og grønn er en bra kombinasjon. <br /> ";
-historie = historie + Adj3 + " er veldig dårlig. <br /> ";
-historie = historie + navn + " sin verste fiende er " + Adj4 + ". <br /> ";
-historie = historie + Adj5 + " var veldig snill. <br /> ";
-historie = historie + navn + " bor på " + Adj6 + ". <br /> ";
-historie = historie + Adj7 + " har skumle monstre i seg. <br /> ";
-historie = historie + navn + " hadde fått " + Adj8 + ". <br /> ";
-historie = historie + navn + " ser ut som en " + Adj9 + ". <br />";
-historie = historie + navn + " hadde " + Adj10 + ". <br />";
+historie = historie + navn + " loves to " + Adj1 + ". <br /> ";
+historie = historie + Adj2 + " and green is a great combination. <br /> ";
+historie = historie + Adj3 + " is very bad. <br /> ";
+historie = historie + navn + " worst enemy is " + Adj4 + ". <br /> ";
+historie = historie + Adj5 + " was very nice. <br /> ";
+historie = historie + navn + " lives at " + Adj6 + ". <br /> ";
+historie = historie + Adj7 + " has scary monsters in it. <br /> ";
+historie = historie + navn + " had recieved " + Adj8 + ". <br /> ";
+historie = historie + navn + " looks like a " + Adj9 + ". <br />";
+historie = historie + navn + " had " + Adj10 + ". <br />";
 
 document.getElementById("historie").innerHTML = historie;
 
@@ -282,7 +282,7 @@ document.getElementById("historie").innerHTML = historie;
 #border {                  
    background-color: #882a1c;
    border-width: 20px;
-   border-style: groove;
+   border-style: dashed;
    opacity: 0.75;
    text-align: center;
    align-content: center;
@@ -309,8 +309,8 @@ img {
 body {
   font-family: 'Libre Baskerville', serif;
   src: url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap');
-  background-image: url("Snowing.gif");
   color: #fff;
+  background-image: url("Snowing3.gif");
 }
 
 h1 {
@@ -322,8 +322,7 @@ h1 {
 
 </head>
 <body>
-
-<div class="row">   
+   
 <div id="border">
 <div id="h1">
 
@@ -331,7 +330,7 @@ h1 {
 
     <br>
 
-    <p>Spill musikk!</p>
+    <p>Play music!</p>
     <audio controls>
         <source src="SW.ogg" type="audio/ogg">
         <source src="Stardew Valley OST - Winter Festival.mp3" type="audio/mpeg">
@@ -345,7 +344,10 @@ h1 {
     <br>
     <br>
 
-    <div id="ramme">
+    <div class="row">
+
+    <div class="col-md-4">
+
     <h1>Christmas quiz</h1>
 
     <p>1. Where did modern christmas trees originate?</p>
@@ -356,9 +358,12 @@ h1 {
     
     <p>3. What is the old-english word for christmas time?</p>
     <p id="svar3">Click here for the answer</p> 
+
     </div>
 
     <br>
+
+    <div class="col-md-4">
     
     <h1>Christmassy Pokemon</h1>
 
@@ -370,39 +375,61 @@ h1 {
         <p><input type="radio" name="bildeliste" id="rbtnBilde3" value="433.png" />Chingling</p>
     </ol>
 
+    </div>
+
     <br>
+
+    <div class="col-md-4">
 
     <h1>Roundtimes</h1>
     <h3>Times:</h3>
     <p id="leggtil">Show time by clicking this twice.</p>
 
-    <br>
-
     <ol id="tider">
     </ol>
+
+    </div>
+
+    <div class="col-md-4">
+
     <h1>Current Time</h1>
-    <p>Klokka er nå: <span id="klokkeutskrift">Kunne ikke vise tidspunkt</span></p>
+    <p>Click on the text to show the time.</p>
+    <p>The time is: <span id="klokkeutskrift">Kunne ikke vise tidspunkt</span></p>
 
     <br>
 
-    <h1 id="melding">Bytt farge!</h1>
+    </div>
+
+    <div class="col-md-4">
+
+    <h1 id="melding">Change color!</h1>
     <p>Click on the color you want!:</p>
     <div class="mx-auto" style="width: 200px;">
     <ul>
         <li id="G">Green</li>
         <li id="B">White</li>
         <li id="R">Red</li>
+
+        <br>
+
     </ul>
+    </div>
     </div>
 
 <br>
 
-Klikk på knappen! <p><input type="checkbox" id="chkVisMelding2" /></p>
+<div class="col-md-4">
+
+<h1>Press the button!</h1> <p><input type="checkbox" id="chkVisMelding2" /></p>
 <p id="melding2">God jul!</p>
 
 <br>
+<br>
 
-<p>Canvas tegninger!</p>
+</div>
+</div>
+
+<h1>Canvas drawings</h1>
 <canvas id="tegneflate" width=200 height=200></canvas>
 
 <canvas id="tegneflate2" width=200 height=200></canvas>
@@ -411,82 +438,97 @@ Klikk på knappen! <p><input type="checkbox" id="chkVisMelding2" /></p>
 
 <br>
 
-<button class="btn btn-light" id="btnKlikk">Klikk meg!</button>   
-<p>Knappen er trykket <span id="antKlikk">0</span> ganger</p>
+<div class="row">
+<div class="col-md-4">
+
+<button class="btn btn-light" id="btnKlikk">Click me!</button>   
+<p>The button has been pressed <span id="antKlikk">0</span> times!</p>
 
 <br>
 
-<p>BMI Kalkulator</p>
+</div>
+
+<div class="col-md-4">
+
+<h1>BMI Calculator</h1>
 <p>Vekt: <input type="text" id="txtVekt" /><br />
 Høyde: <input type="text" id="txtHoyde" /></p>
     
-    <button class="btn btn-light" id="btnBeregn">Beregn</button>
+    <button class="btn btn-light" id="btnBeregn">Calculate</button>
     <p id="resultat"></p>
+
+</div>
+</div>
 
 <br>
 
-<p>
-
-    <p>Historiegenerator</p>
-    Navn: <input type="text" id="txtNavn" placeholder="Navn" /><br />
+    <h1>Historygenerator</h1>
+    Name: <input type="text" id="txtNavn" placeholder="Name" /><br />
     
-    Kjønn: <select id="1stKjonn" placeholder="Velg kjønn" ><option
+    Kjønn: <select id="1stGender" placeholder="Pick gender" ><option
     
-    value="gutt">Gutt</option><option 
+    value="boy">Boy</option><option 
     value="attack helicopter">Attack helicopter</option><option
-    value="jente">Jente</option></select><br />
+    value="girl">Girl</option></select><br />
 
     Alder: <input type="number" min="0" max="120" id="txtAlder" placeholder="99" /><br />
     
     <br>
     
-    Aktivitet: <input type="text" id="txtAdjektiv1" placeholder="Aktvivitet" /><br />
+    Aktivitet: <input type="text" id="txtAdjektiv1" placeholder="Activity" /><br />
     
     <br>
     
-    Dekorasjon: <input type="text" id="txtAdjektiv2" placeholder="Dekorasjon" /><br />
+    Dekorasjon: <input type="text" id="txtAdjektiv2" placeholder="Decoration" /><br />
     
     <br>
     
-    Spill: <input type="text" id="txtAdjektiv3" placeholder="Spill" /><br />
+    Spill: <input type="text" id="txtAdjektiv3" placeholder="Game" /><br />
     
     <br>
     
-    Annen person: <input type="text" id="txtAdjektiv4" placeholder="Annen person" /><br />
+    Annen person: <input type="text" id="txtAdjektiv4" placeholder="Another person" /><br />
     
     <br>
     
-    Forelder: <input type="text" id="txtAdjektiv5" placeholder="Forelder" /><br />
+    Forelder: <input type="text" id="txtAdjektiv5" placeholder="Parent" /><br />
     
     <br>
     
-    Bygning: <input type="text" id="txtAdjektiv6" placeholder="Bygning" /><br />
+    Bygning: <input type="text" id="txtAdjektiv6" placeholder="Building" /><br />
     
     <br>
     
-    Bok: <input type="text" id="txtAdjektiv7" placeholder="Bok" /><br />
+    Bok: <input type="text" id="txtAdjektiv7" placeholder="Book" /><br />
     
     <br>
     
-    Skade: <input type="text" id="txtAdjektiv8" placeholder="Skade" /><br />
+    Skade: <input type="text" id="txtAdjektiv8" placeholder="wound" /><br />
     
     <br>
     
-    Dyr: <input type="text" id="txtAdjektiv9" placeholder="Dyr" /><br />
+    Dyr: <input type="text" id="txtAdjektiv9" placeholder="Animal" /><br />
     
     <br>
     
-    Effekt på person: <input type="text" id="txtAdjektiv10" placeholder="Effekt på person" /><br />
+    Effekt på person: <input type="text" id="txtAdjektiv10" placeholder="Effect on person" /><br />
     
     <br>
     
-    <button id="btnGenererer2" class="btn btn-light" type="button">Generer historie</button></p>
+    <button id="btnGenererer2" class="btn btn-light" type="button">Generate story</button></p>
+
+    <br>
     
     <p id="historie"></p>
 
+    <br>
+
 <br>
 
-<p>Myndighetstester</p>
+<div class="row">
+<div class="col-md-4">
+
+<h1>Age to drink tester</h1>
 <p><input type="text" id="textVerdi"><br>
     <br>
     <button class="btn btn-light" id="btnUtfoer">Utfør</button>
@@ -494,13 +536,17 @@ Høyde: <input type="text" id="txtHoyde" /></p>
     
     <p id="utskrift"></p>
 
-<br>
+</div> 
 
-<p>Gjett tallet!</p>
+<div class="col-md-4">
+
+<h1>Guess the number!</h1>
 <p>Tall: <input type="text" id="txtTall" /><br />
     <br>
-<button class="btn btn-light" id="btnGjett2">Gjett</button</p>
+<button class="btn btn-light" id="btnGjett2">Guess</button</p>
 <p id="melding3"></p>
+
+</div>
 
 </body>
 </html>
